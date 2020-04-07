@@ -3,11 +3,20 @@ from flask import Flask
 app = Flask(__name__)
 
 import pymysql
-from db_config import mysql
 from flask import jsonify
 from flask import flash, request
 from werkzeug import generate_password_hash, check_password_hash
-		
+
+from flaskext.mysql import MySQL
+
+mysql = MySQL()
+ 
+# MySQL configurations
+app.config['MYSQL_DATABASE_USER'] = 'GDya0c7r3q'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'ne5S5N7u08'
+app.config['MYSQL_DATABASE_DB'] = 'GDya0c7r3q'
+app.config['MYSQL_DATABASE_HOST'] = 'remotemysql.com'
+mysql.init_app(app)
 		
 @app.route('/users')
 def users():
