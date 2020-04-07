@@ -5,7 +5,7 @@ app = Flask(__name__)
 import pymysql
 from flask import jsonify
 from flask import flash, request
-from werkzeug import generate_password_hash, check_password_hash
+
 
 from flaskext.mysql import MySQL
 
