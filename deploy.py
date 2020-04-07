@@ -3,7 +3,6 @@ from flask import Flask
 app = Flask(__name__)
 
 import pymysql
-from app import app
 from db_config import mysql
 from flask import jsonify
 from flask import flash, request
