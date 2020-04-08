@@ -71,7 +71,7 @@ def selectpage():
 
 		id = request.args.get('page')
 		intid = int(id)
-		page = convid * 10 - 10
+		page = intid * 10 - 10
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
 		cursor.execute("SELECT * FROM tbl_user LIMIT %s ,10", page)
