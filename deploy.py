@@ -69,8 +69,9 @@ def select(id):
 @app.route('/selectpage')
 def selectpage():
 	try:
-		id = request.args.get('id')
-		page = id * 10 - 10
+		id = request.args.get('page')
+		intid = int(id)
+		page = intid * 10 - 10
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
 		cursor.execute("SELECT * FROM tbl_user LIMIT %s ,10", page)
