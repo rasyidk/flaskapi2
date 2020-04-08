@@ -65,6 +65,31 @@ def select(id):
 	finally:
 		cursor.close() 
 		conn.close()
+
+@app.route('/selectpage')
+def selectpage():
+	try:
+		id = request.args.get('id')
+		page = id * 10 - 10
+		conn = mysql.connect()
+		cursor = conn.cursor(pymysql.cursors.DictCursor)
+		cursor.execute("SELECT * FROM tbl_user LIMIT %s ,10", page)
+		rows = cursor.fetchall()
+		message = {
+
+			'status': 404,
+			'data' : rows,
+			'message': 'Not Found: ' + request.url,
+			
+		}
+		resp = jsonify(message)
+		resp.status_code = 200
+		return resp
+	except Exception as e:
+		print(e)
+	finally:
+		cursor.close() 
+		conn.close()
 		
 @app.route('/user/<int:id>')
 def user(id):
