@@ -68,10 +68,10 @@ def select(id):
 
 @app.route('/selectpage')
 def selectpage():
-	try:
+
 		id = request.args.get('page')
 		intid = int(id)
-		page = intid * 10 - 10
+		page = convid * 10 - 10
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
 		cursor.execute("SELECT * FROM tbl_user LIMIT %s ,10", page)
@@ -86,11 +86,6 @@ def selectpage():
 		resp = jsonify(message)
 		resp.status_code = 200
 		return resp
-	except Exception as e:
-		print(e)
-	finally:
-		cursor.close() 
-		conn.close()
 		
 @app.route('/user/<int:id>')
 def user(id):
