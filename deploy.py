@@ -80,7 +80,7 @@ def selectpage():
 
 			'status': 200,
 			'data' : rows,
-			'page': {'halaman' : intid},
+			'page': intid,
 			
 		}
 		resp = jsonify(message)
