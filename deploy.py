@@ -78,9 +78,9 @@ def selectpage():
 		rows = cursor.fetchall()
 		message = {
 
-			'status': 404,
+			'status': 200,
 			'data' : rows,
-			'message': 'Not Found: ' + request.url,
+			'mpage': page,
 			
 		}
 		resp = jsonify(message)
